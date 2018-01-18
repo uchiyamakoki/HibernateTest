@@ -8,7 +8,7 @@
     <class name="com.akaxia.po.Sjzdfl" table="sjzdfl" catalog="akaxiacrm">
         <id name="sjzdflid" type="java.lang.Integer">
             <column name="sjzdflid" />
-            <generator class="assigned"></generator>
+            <generator class="identity"></generator>
         </id>
         <property name="sjzdflmc" type="java.lang.String">
             <column name="sjzdflmc" />
