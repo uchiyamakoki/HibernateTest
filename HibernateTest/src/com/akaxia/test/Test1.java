@@ -25,7 +25,7 @@ public class Test1 {
 		
 		
 		Transaction transaction=HibernateSessionFactory.getSession().beginTransaction();
-		
+		//
 		//sjzdflDAO.attachDirty(sjzdfl);
 		sjzdflDAO.delete(sjzdfl);
 		//sjzdflDAO.save(sjzdfl);
