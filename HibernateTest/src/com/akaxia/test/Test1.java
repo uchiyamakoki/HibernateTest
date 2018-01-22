@@ -6,6 +6,7 @@ import java.util.Set;
 import org.hibernate.Transaction;
 
 import com.akaxia.dao.SjzdflDAO;
+import com.akaxia.dao.SjzdxxDAO;
 import com.akaxia.po.Sjzdfl;
 import com.akaxia.po.Sjzdxx;
 import com.akaxia.sessionFactory.HibernateSessionFactory;
@@ -22,11 +23,19 @@ public class Test1 {
 		//sjzdfl.setSjzdflid(6);
 		Sjzdfl sjzdfl=sjzdflDAO.findById(6);
 		//sjzdfl.setSjzdflmc("测试更新数据字典分类");
+		SjzdxxDAO sjzdxxDAO=new SjzdxxDAO();
+		List<Sjzdxx> sjzdxxAll=sjzdxxDAO.findByProperty("sjzdfl", sjzdfl);
 		
 		
 		Transaction transaction=HibernateSessionFactory.getSession().beginTransaction();
+		for(Sjzdxx sjzdxx:sjzdxxAll){
+			sjzdxxDAO.delete(sjzdxx);
+		}
+		transaction.commit();
+		transaction=HibernateSessionFactory.getSession().beginTransaction();
 		//测试
 		//sjzdflDAO.attachDirty(sjzdfl);
+		
 		sjzdflDAO.delete(sjzdfl);
 		//sjzdflDAO.save(sjzdfl);
 		
